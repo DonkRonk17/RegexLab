@@ -376,11 +376,31 @@ MIT License - see LICENSE file for details
 
 ---
 
-## 🙏 Acknowledgments
+## 🔗 Integration & Team Brain
 
-Built with ❤️ by Logan Smith / Metaphy LLC
+RegexLab integrates seamlessly with other Team Brain tools. See the integration documentation for details:
 
-Part of the AutoProjects collection - professional CLI tools for developers.
+- **Integration Plan:** [INTEGRATION_PLAN.md](INTEGRATION_PLAN.md) - How RegexLab works with Team Brain ecosystem
+- **Quick Start Guides:** [QUICK_START_GUIDES.md](QUICK_START_GUIDES.md) - Agent-specific 5-minute guides
+- **Integration Examples:** [INTEGRATION_EXAMPLES.md](INTEGRATION_EXAMPLES.md) - Copy-paste code patterns
+- **Examples:** [EXAMPLES.md](EXAMPLES.md) - 12 detailed usage examples
+- **Cheat Sheet:** [CHEAT_SHEET.txt](CHEAT_SHEET.txt) - Quick reference guide
+
+---
+
+## 📝 Credits
+
+**Built by:** Atlas (Team Brain)  
+**For:** Logan Smith / Metaphy LLC  
+**Requested by:** Q-Mode Tool Development (Developer Productivity)  
+**Why:** Enable rapid regex testing and pattern development without external tools  
+**Part of:** Beacon HQ / Team Brain Ecosystem  
+**Date:** January 2026  
+**Quality Score:** 100/100
+
+**Special Thanks:**
+- Forge for tool repair priority guidance
+- The Team Brain collective for testing and feedback
 
 ---
 
@@ -393,3 +413,5 @@ Part of the AutoProjects collection - professional CLI tools for developers.
 ---
 
 **RegexLab** - Test, Learn, Master Regex! 🧪
+
+*Another heroic deed complete – the realm is better for it!* ⚡

@@ -1,0 +1,281 @@
+================================================================================
+REGEXLAB CHEAT SHEET - Quick Reference
+================================================================================
+
+QUICK START
+-----------
+1. Install: Clone or copy regexlab.py to your project
+2. Test a pattern: python regexlab.py test "\d+" "abc 123"
+3. See library: python regexlab.py library list
+4. Get help: python regexlab.py --help
+
+================================================================================
+CORE COMMANDS
+--------------------------------------------------------------------------------
+
+TEST PATTERN:
+  python regexlab.py test PATTERN TEXT [OPTIONS]
+  
+  Options:
+    -i, --ignorecase    Case-insensitive matching
+    -m, --multiline     ^ and $ match line boundaries
+    -s, --dotall        . matches newlines
+    -g, --groups        Show capturing groups
+  
+  Examples:
+    python regexlab.py test "\d+" "abc 123 def 456"
+    python regexlab.py test "hello" "Hello World" -i
+    python regexlab.py test "(\w+)@(\w+)" "user@domain" -g
+
+--------------------------------------------------------------------------------
+
+FIND ALL MATCHES:
+  python regexlab.py find PATTERN TEXT [OPTIONS]
+  
+  Options:
+    -i, --ignorecase    Case-insensitive matching
+  
+  Examples:
+    python regexlab.py find "\d+" "1 2 3 4 5"
+    python regexlab.py find "[A-Z]\w+" "Hello World" -i
+
+--------------------------------------------------------------------------------
+
+REPLACE:
+  python regexlab.py replace PATTERN REPLACEMENT TEXT [OPTIONS]
+  
+  Options:
+    -i, --ignorecase    Case-insensitive matching
+    -c, --count N       Max replacements (0 = all)
+  
+  Examples:
+    python regexlab.py replace "\d+" "X" "abc 123 def 456"
+    python regexlab.py replace "cat" "dog" "The cat sat" -i
+    python regexlab.py replace "\d" "X" "12345" -c 2
+
+--------------------------------------------------------------------------------
+
+SPLIT:
+  python regexlab.py split PATTERN TEXT [OPTIONS]
+  
+  Options:
+    -i, --ignorecase    Case-insensitive matching
+  
+  Examples:
+    python regexlab.py split "," "a,b,c,d"
+    python regexlab.py split "\s+" "one two three"
+    python regexlab.py split "[,;]+" "a,b;c,,d"
+
+================================================================================
+PATTERN LIBRARY
+--------------------------------------------------------------------------------
+
+LIST ALL PATTERNS:
+  python regexlab.py library list
+
+TEST LIBRARY PATTERN:
+  python regexlab.py library test NAME TEXT
+  
+  Available Patterns:
+    email           Standard email format
+    url             HTTP/HTTPS URL
+    phone_us        US phone number
+    ip_address      IPv4 address
+    date_iso        ISO date (YYYY-MM-DD)
+    time_24h        24-hour time (HH:MM)
+    hex_color       Hex color code (#RRGGBB)
+    username        3-16 chars, alphanumeric
+    password_strong Strong password (8+ chars)
+    credit_card     Credit card number
+    ssn             US Social Security Number
+    zip_code_us     US ZIP code
+
+  Examples:
+    python regexlab.py library test email "user@example.com"
+    python regexlab.py library test phone_us "555-123-4567"
+    python regexlab.py library test ip_address "192.168.1.1"
+
+================================================================================
+FAVORITES & HISTORY
+--------------------------------------------------------------------------------
+
+ADD FAVORITE:
+  python regexlab.py favorite add NAME PATTERN [--description DESC]
+  
+  Examples:
+    python regexlab.py favorite add myemail "\w+@\w+\.\w+"
+    python regexlab.py favorite add phone "\d{3}-\d{4}" --description "Local phone"
+
+LIST FAVORITES:
+  python regexlab.py favorite list
+
+SHOW HISTORY:
+  python regexlab.py history [-n COUNT]
+  
+  Examples:
+    python regexlab.py history          # Last 10 patterns
+    python regexlab.py history -n 20    # Last 20 patterns
+
+================================================================================
+EXPORT MATCHES
+--------------------------------------------------------------------------------
+
+EXPORT TO FILE:
+  python regexlab.py export PATTERN TEXT OUTPUT [OPTIONS]
+  
+  Options:
+    -f, --format FORMAT   json (default), csv, or txt
+  
+  Examples:
+    python regexlab.py export "\d+" "abc 123 456" matches.json
+    python regexlab.py export "\w+@\w+" "a@b c@d" emails.csv -f csv
+    python regexlab.py export "[A-Z]+" "ABC DEF" words.txt -f txt
+
+================================================================================
+COMMON REGEX PATTERNS (QUICK REFERENCE)
+--------------------------------------------------------------------------------
+
+BASIC:
+  \d        Any digit (0-9)
+  \D        Any non-digit
+  \w        Word character (a-z, A-Z, 0-9, _)
+  \W        Non-word character
+  \s        Whitespace (space, tab, newline)
+  \S        Non-whitespace
+  .         Any character (except newline)
+  \.        Literal dot (escaped)
+
+QUANTIFIERS:
+  *         0 or more
+  +         1 or more
+  ?         0 or 1 (optional)
+  {n}       Exactly n times
+  {n,}      n or more times
+  {n,m}     Between n and m times
+
+ANCHORS:
+  ^         Start of string/line
+  $         End of string/line
+  \b        Word boundary
+
+GROUPS:
+  (...)     Capturing group
+  (?:...)   Non-capturing group
+  (?P<n>.)  Named group
+  \1        Backreference to group 1
+
+CHARACTER CLASSES:
+  [abc]     a, b, or c
+  [^abc]    Not a, b, or c
+  [a-z]     a through z
+  [A-Za-z]  Any letter
+  [0-9]     Any digit (same as \d)
+
+================================================================================
+PYTHON API
+--------------------------------------------------------------------------------
+
+IMPORT:
+  from regexlab import RegexLab
+
+BASIC USAGE:
+  lab = RegexLab()
+  
+  # Test pattern
+  lab.test_pattern(r"\d+", "abc 123")
+  
+  # Find all
+  matches = lab.find_all(r"\d+", "1 2 3")
+  
+  # Replace
+  result = lab.replace_pattern(r"\d", "X", "123")
+  
+  # Split
+  parts = lab.split_text(r",", "a,b,c")
+
+LIBRARY:
+  # List patterns
+  lab.list_library()
+  
+  # Get pattern
+  pattern = lab.get_library_pattern("email")
+  
+  # Test library pattern
+  lab.test_library_pattern("email", "test@mail.com")
+
+FAVORITES:
+  # Add favorite
+  lab.add_favorite("my_pattern", r"\d+", "Digits")
+  
+  # List favorites
+  lab.list_favorites()
+
+HISTORY:
+  # Show history
+  lab.show_history(10)
+
+EXPORT:
+  # Export matches
+  lab.export_matches(r"\d+", "123 456", "output.json", "json")
+
+================================================================================
+FLAGS
+--------------------------------------------------------------------------------
+
+  Flag          Constant        Description
+  -i            re.IGNORECASE   Case-insensitive matching
+  -m            re.MULTILINE    ^ and $ match line boundaries
+  -s            re.DOTALL       . matches newline characters
+
+COMBINE FLAGS:
+  python regexlab.py test "^hello" "HELLO\nworld" -i -m
+
+================================================================================
+TROUBLESHOOTING
+--------------------------------------------------------------------------------
+
+ERROR: "Invalid regex pattern"
+  - Check for unescaped special characters: . * + ? [ ] ( ) { } ^ $ | \
+  - Escape them with backslash: \. \* \+ etc.
+
+ERROR: "Pattern not found in library"
+  - Use 'library list' to see available patterns
+  - Pattern names are case-sensitive
+
+NO MATCHES FOUND:
+  - Try case-insensitive flag: -i
+  - Check for whitespace issues
+  - Test simpler pattern first
+
+UNICODE ERRORS (Windows):
+  - Use ASCII-only text for testing
+  - Or run in UTF-8 enabled terminal
+
+================================================================================
+FILE LOCATIONS
+--------------------------------------------------------------------------------
+
+Config Directory:    ~/.regexlab/
+History File:        ~/.regexlab/history.json
+Favorites File:      ~/.regexlab/favorites.json
+
+================================================================================
+RESOURCES
+--------------------------------------------------------------------------------
+
+Documentation:       README.md
+Examples:            EXAMPLES.md
+Integration Guide:   INTEGRATION_PLAN.md
+Quick Start:         QUICK_START_GUIDES.md
+GitHub:              https://github.com/DonkRonk17/RegexLab
+
+================================================================================
+CREDITS
+--------------------------------------------------------------------------------
+
+Built by:   Atlas (Team Brain)
+For:        Logan Smith / Metaphy LLC
+License:    MIT
+Version:    1.0.0
+
+================================================================================
