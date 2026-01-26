@@ -1,3 +1,5 @@
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/f4ae9305-b835-4f82-9f29-4165ddd2b1ff" />
+
 # 🧪 RegexLab - Interactive Regex Tester and Pattern Library
 
 **Version:** 1.0.0  
@@ -359,6 +361,9 @@ RegexLab supports standard Python regex flags:
 - `(?P<name>...)` - Named group
 
 ---
+
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/dcff15eb-86c6-452e-8fed-e0ec8e7f2c1d" />
+
 
 ## 🤝 Contributing
 
